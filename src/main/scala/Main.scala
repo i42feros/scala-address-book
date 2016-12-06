@@ -1,6 +1,11 @@
+import service.HumanQuestionsService
 
 object Main extends App {
-  println("Address book app running!")
+  println("Address book app running!\n")
+  println(" - - Questions - -")
 
-  // TODO wire up
+  val filePath = getClass.getResource("/AddressBook").getPath
+  val humanService = new HumanQuestionsService(filePath)
+
+  humanService.printQuestionsFromData
 }

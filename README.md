@@ -11,7 +11,15 @@ This application will read an addressBook file and will answer the following que
 
 ## How to run
 
-// TODO
+Assuming that you have sbt install, you can run the code with:
+```
+sbt run
+```
+or you can test the code by running
+```
+ sbt test
+ ```
+
 
 ## Explanation
 

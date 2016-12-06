@@ -1,6 +1,6 @@
 package domain
 
-import java.time.LocalDateTime
+import java.util.Date
 
 
-case class Human(fullName: String, sex: Sex, dateOfBirth: LocalDateTime)
+case class Human(fullName: String, sex: Sex, dateOfBirth: Date)

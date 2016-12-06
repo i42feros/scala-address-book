@@ -19,6 +19,7 @@ object PersonFileParser extends FileParser[Human] {
           Sex.valueOf(columns(1)).get,
           parseDate(columns(2)).get)
       ).toOption
+      // TODO display some error message if it does not match format
     }.toList
   }
 }

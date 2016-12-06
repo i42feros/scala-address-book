@@ -16,3 +16,7 @@ This application will read an addressBook file and will answer the following que
 ## Explanation
 
 // TODO
+
+## Assumptions
+
+- When reading a file, if it contains any invalid data we will ignore that row

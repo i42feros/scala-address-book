@@ -8,7 +8,6 @@ import domain.Human
 case class DaysOlderThan(humanName1: String, humanName2: String) extends QuestionAnswer[Human, Option[Long]] {
   override val question = s"How many days older is $humanName1 than $humanName2?"
 
-  // TODO If human not found we could return an error message instead
   override def answer(data: Seq[Human]): Option[Long] = {
     val maybeHuman1 = data.find(_.fullName.startsWith(humanName1))
     val maybeHuman2 = data.find(_.fullName.startsWith(humanName2))
@@ -16,9 +15,7 @@ case class DaysOlderThan(humanName1: String, humanName2: String) extends Questio
     for {
       human1 <- maybeHuman1
       human2 <- maybeHuman2
-
     } yield getDaysBetweenDates(human1.dateOfBirth, human2.dateOfBirth)
-
   }
 
   override def answerToString(data: Seq[Human]): String = answer(data).map(days => s"$days days older")

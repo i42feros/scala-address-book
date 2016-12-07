@@ -10,8 +10,8 @@ abstract class ReplyQuestionsService[T](fileParser: FileParser[T])(filePath: Str
 
   def printQuestionsFromData: Unit = {
     questions.foreach { question =>
-      println(question.question)
-      println(question.answerToString(data))
+      println(s"- ${question.question}")
+      println(s"  ${question.answerToString(data)}")
     }
   }
 }

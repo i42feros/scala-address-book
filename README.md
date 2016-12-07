@@ -28,3 +28,4 @@ or you can test the code by running
 ## Assumptions
 
 - When reading a file, if it contains any invalid data we will ignore that row
+- When matching by name, as in the question 3, if a name is duplicated in the file, it will pick up the first one.

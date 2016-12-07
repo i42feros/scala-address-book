@@ -10,6 +10,9 @@ import scala.io.Source
 
 object PersonFileParser extends FileParser[Human] {
   private val Columns = 3
+  private val FullNameColumnIndex = 0
+  private val SexColumnIndex = 1
+  private val DateColumnIndex = 2
 
   override def parseFile(filePath: String): List[Human] = {
     val fileLines = Source.fromFile(filePath).getLines
@@ -25,9 +28,9 @@ object PersonFileParser extends FileParser[Human] {
   }
 
   private def getColumnValues(columns: Array[String]): Option[Human] = {
-    val fullName: String = columns(0)
-    val dateParsed: Either[String, Date] = parseDate(columns(2))
-    val maybeSex = Sex.valueOf(columns(1))
+    val fullName: String = columns(FullNameColumnIndex)
+    val maybeSex = Sex.valueOf(columns(SexColumnIndex))
+    val dateParsed: Either[String, Date] = parseDate(columns(DateColumnIndex))
 
     dateParsed match {
       case Right(_) if maybeSex.isEmpty =>

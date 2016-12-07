@@ -1,8 +1,8 @@
 package utils
 
-import java.util.Date
+import java.time.LocalDate
 
 object DateImplicits {
-  implicit def getDateIgnoringErrors(value: Either[String, Date]): Date =
+  implicit def getDateIgnoringErrors(value: Either[String, LocalDate]): LocalDate =
     value.fold(_ => None, date => Some(date)).get
 }

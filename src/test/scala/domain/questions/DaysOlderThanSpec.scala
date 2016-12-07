@@ -34,7 +34,7 @@ class DaysOlderThanSpec extends WordSpec with Matchers {
 
         val answer = daysOlderThan.answer(humans)
 
-        answer should be(Some(30))
+        answer should be(Some(31))
       }
 
       "Bill is younger than Paul" in new Context {

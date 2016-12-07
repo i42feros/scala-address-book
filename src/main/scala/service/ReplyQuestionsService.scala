@@ -11,7 +11,7 @@ abstract class ReplyQuestionsService[T](fileParser: FileParser[T])(filePath: Str
   def printQuestionsFromData: Unit = {
     questions.foreach { question =>
       println(question.question)
-      println(question.answer(data))
+      println(question.answerToString(data))
     }
   }
 }

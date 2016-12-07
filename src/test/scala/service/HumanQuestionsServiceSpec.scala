@@ -28,7 +28,7 @@ class HumanQuestionsServiceSpec extends WordSpec with Matchers {
 
         answers should be(Vector(
           1,
-          Human("Wes Jackson", Sex.Male, parseDate("14/08/74")),
+          Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
           None
         ))
       }
@@ -49,7 +49,7 @@ class HumanQuestionsServiceSpec extends WordSpec with Matchers {
 
         answers should be(Vector(
           3,
-          Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
+          Human("Wes Jackson", Sex.Male, parseDate("14/08/74")),
           Some(2862)
         ))
       }

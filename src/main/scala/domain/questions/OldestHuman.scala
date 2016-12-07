@@ -9,4 +9,6 @@ object OldestHuman extends QuestionAnswer[Human, Human] {
   override val question = s"Who is the oldest person in the address book?"
 
   override def answer(data: Seq[Human]): Human = data.minBy(_.dateOfBirth)
+
+  override def answerToString(data: Seq[Human]): String = answer(data).fullName
 }

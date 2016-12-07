@@ -1,11 +1,11 @@
 package service
 
-import domain.questions.{CountBySex, DaysOlderThan, OldestHuman, QuestionAnswer}
+import domain.questions.{CountBySex, DaysOlderThan, OldestHuman}
 import domain.{Human, Sex}
-import utils.PersonFileParser
+import utils.HumanFileParser
 
 
-class HumanQuestionsService(filePath: String) extends ReplyQuestionsService[Human](PersonFileParser)(filePath) {
+class HumanQuestionsService(filePath: String) extends ReplyQuestionsService[Human](HumanFileParser)(filePath) {
   private val nameHuman1 = "Bill"
   private val nameHuman2 = "Paul"
   override val questions = Vector(

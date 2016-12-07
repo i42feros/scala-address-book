@@ -14,7 +14,7 @@ class PersonFileParserSpec extends WordSpec with Matchers {
       "is not an empty file" in {
         val filePath = getClass.getResource("/friends.txt").getPath
 
-        val peopleRead = PersonFileParser.parseFile(filePath)
+        val peopleRead = HumanFileParser.parseFile(filePath)
 
         peopleRead should be(List(
           Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
@@ -25,7 +25,7 @@ class PersonFileParserSpec extends WordSpec with Matchers {
       "is an empty file" in {
         val filePath = getClass.getResource("/empty.txt").getPath
 
-        val peopleRead = PersonFileParser.parseFile(filePath)
+        val peopleRead = HumanFileParser.parseFile(filePath)
 
         peopleRead should be(List())
       }
@@ -34,7 +34,7 @@ class PersonFileParserSpec extends WordSpec with Matchers {
     "parseFile and ignore invalid Person objects" in {
       val filePath = getClass.getResource("/friends_some_invalid_format.txt").getPath
 
-      val peopleRead = PersonFileParser.parseFile(filePath)
+      val peopleRead = HumanFileParser.parseFile(filePath)
 
       peopleRead should be(List(
         Human("Silvie Robinson", Sex.Female, parseDate("15/01/85"))

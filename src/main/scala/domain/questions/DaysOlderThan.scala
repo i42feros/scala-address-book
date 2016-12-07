@@ -21,7 +21,11 @@ case class DaysOlderThan(humanName1: String, humanName2: String) extends Questio
 
   }
 
+  override def answerToString(data: Seq[Human]): String = answer(data).map(days => s"$days days older")
+    .getOrElse("Error getting a result")
+
   private def getDaysBetweenDates(date1: LocalDate, date2: LocalDate): Long = {
     date2.toEpochDay - date1.toEpochDay
   }
+
 }

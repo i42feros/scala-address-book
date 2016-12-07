@@ -1,6 +1,8 @@
 package service
 
+import domain.{Human, Sex}
 import org.scalatest.{Matchers, WordSpec}
+import utils.DateUtils._
 
 
 class HumanQuestionsServiceSpec extends WordSpec with Matchers {
@@ -16,11 +18,13 @@ class HumanQuestionsServiceSpec extends WordSpec with Matchers {
         (questionAnswers.question, questionAnswers.answer(humanQuestionsService.data)))
 
       questions should be(Seq(
-        s"How many males are in the address book?"
+        "How many males are in the address book?",
+        "Who is the oldest person in the address book?"
       ))
 
       answers should be(Seq(
-        1
+        1,
+        Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get)
       ))
     }
 

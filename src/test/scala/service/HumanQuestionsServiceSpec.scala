@@ -19,12 +19,14 @@ class HumanQuestionsServiceSpec extends WordSpec with Matchers {
 
       questions should be(Seq(
         "How many males are in the address book?",
-        "Who is the oldest person in the address book?"
+        "Who is the oldest person in the address book?",
+        "How many days older is Bill than Paul?"
       ))
 
       answers should be(Seq(
         1,
-        Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get)
+        Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get),
+        None
       ))
     }
 

@@ -3,12 +3,14 @@ package utils
 import java.text.SimpleDateFormat
 import java.util.Date
 
-import scala.util.Try
+import scala.util.{Failure, Success, Try}
 
 object DateUtils {
   private val dateFormatter = new SimpleDateFormat("dd/MM/yy")
 
-  // TODO: Will be more useful return the error message if it fails
-  def parseDate(dateStr: String): Option[Date] =
-    Try(dateFormatter.parse(dateStr)).toOption
+  def parseDate(dateStr: String): Either[String, Date] =
+    Try(dateFormatter.parse(dateStr)) match {
+      case Success(parsedValue) => Right(parsedValue)
+      case Failure(error) => Left(error.toString)
+    }
 }

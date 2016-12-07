@@ -3,6 +3,8 @@ package utils
 import domain.{Human, Sex}
 import org.scalatest.{Matchers, WordSpec}
 import DateUtils._
+import utils.DateImplicits._
+
 
 class PersonFileParserSpec extends WordSpec with Matchers {
 
@@ -15,8 +17,8 @@ class PersonFileParserSpec extends WordSpec with Matchers {
         val peopleRead = PersonFileParser.parseFile(filePath)
 
         peopleRead should be(List(
-          Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get),
-          Human("Silvie Robinson", Sex.Female, parseDate("15/01/85").get)
+          Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
+          Human("Silvie Robinson", Sex.Female, parseDate("15/01/85"))
         ))
       }
 
@@ -35,7 +37,7 @@ class PersonFileParserSpec extends WordSpec with Matchers {
       val peopleRead = PersonFileParser.parseFile(filePath)
 
       peopleRead should be(List(
-        Human("Silvie Robinson", Sex.Female, parseDate("15/01/85").get)
+        Human("Silvie Robinson", Sex.Female, parseDate("15/01/85"))
       ))
     }
   }

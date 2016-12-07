@@ -3,6 +3,7 @@ package domain.questions
 import domain.{Human, Sex}
 import org.scalatest.{Matchers, WordSpec}
 import utils.DateUtils._
+import utils.DateImplicits._
 
 class DaysOlderThanSpec extends WordSpec with Matchers {
 
@@ -14,9 +15,9 @@ class DaysOlderThanSpec extends WordSpec with Matchers {
     "get the answer found for first matching naming" when {
       "both has same date of birth" in new Context {
         val humans = Seq(
-          Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get),
-          Human("Paul Robinson", Sex.Male, parseDate("16/03/77").get),
-          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77").get)
+          Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
+          Human("Paul Robinson", Sex.Male, parseDate("16/03/77")),
+          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77"))
         )
 
         val answer = daysOlderThan.answer(humans)
@@ -26,9 +27,9 @@ class DaysOlderThanSpec extends WordSpec with Matchers {
 
       "Bill is older than Paul" in new Context {
         val humans = Seq(
-          Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get),
-          Human("Paul Robinson", Sex.Male, parseDate("16/04/77").get),
-          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77").get)
+          Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
+          Human("Paul Robinson", Sex.Male, parseDate("16/04/77")),
+          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77"))
         )
 
         val answer = daysOlderThan.answer(humans)
@@ -38,9 +39,9 @@ class DaysOlderThanSpec extends WordSpec with Matchers {
 
       "Bill is younger than Paul" in new Context {
         val humans = Seq(
-          Human("Bill McKnight", Sex.Male, parseDate("17/03/77").get),
-          Human("Paul Robinson", Sex.Male, parseDate("16/03/77").get),
-          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77").get)
+          Human("Bill McKnight", Sex.Male, parseDate("17/03/77")),
+          Human("Paul Robinson", Sex.Male, parseDate("16/03/77")),
+          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77"))
         )
 
         val answer = daysOlderThan.answer(humans)
@@ -50,10 +51,10 @@ class DaysOlderThanSpec extends WordSpec with Matchers {
 
       "more than 2 humans called Bill and Paul" in new Context {
         val humans = Seq(
-          Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get),
-          Human("Paul Robinson", Sex.Male, parseDate("17/03/77").get),
-          Human("Bill White", Sex.Male, parseDate("14/03/77").get),
-          Human("Paul White", Sex.Male, parseDate("15/03/77").get)
+          Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
+          Human("Paul Robinson", Sex.Male, parseDate("17/03/77")),
+          Human("Bill White", Sex.Male, parseDate("14/03/77")),
+          Human("Paul White", Sex.Male, parseDate("15/03/77"))
         )
 
         val answer = daysOlderThan.answer(humans)
@@ -66,8 +67,8 @@ class DaysOlderThanSpec extends WordSpec with Matchers {
     "get None answer" when {
       "Any of the human is not found" in new Context {
         val humans = Seq(
-          Human("Bill McKnight", Sex.Male, parseDate("16/03/77").get),
-          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77").get)
+          Human("Bill McKnight", Sex.Male, parseDate("16/03/77")),
+          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77"))
         )
 
         val answer = daysOlderThan.answer(humans)
@@ -77,7 +78,7 @@ class DaysOlderThanSpec extends WordSpec with Matchers {
 
       "Both of the humans are not found" in new Context {
         val humans = Seq(
-          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77").get)
+          Human("Jonas McKnight", Sex.Male, parseDate("16/03/77"))
         )
 
         val answer = daysOlderThan.answer(humans)
